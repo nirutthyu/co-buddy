@@ -1,13 +1,190 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* App.css */
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header {
+  padding: 10px;
+  background-color: #343a40;
+  color: #fff;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  margin-left: 10px;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chat-container {
+  width: 400px;
+  max-width: 90%;
+  height: 500px;
+  max-height: 80vh;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  margin: auto; /* Center horizontally */
+}
+
+.chat-history {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.chat-item {
+  display: flex;
+  margin: 5px 0;
+  max-width: 70%;
+  text-align: start;
+  padding: 5px;
+  padding-bottom: 2px;
+  border-radius: 10px;
+  box-shadow: 10px 10px;
+  z-index: 1001;
+}
+
+.chat-item.user {
+  justify-content: flex-end;
+  align-self: flex-end;
+  background-color: #8e65a0; /* Changed to a more vibrant color */
+  margin-left: auto;
+  width: fit-content;
+}
+
+.chat-item.model {
+  justify-content: flex-start;
+  align-self: flex-start;
+  background-color: #916695; /* Changed to a more vibrant color */
+  margin-right: auto;
+  width: fit-content;
+}
+
+.btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-dark:hover {
+  background-color: #483d8b;
+}
+
+.sideBar {
+  position: fixed;
+  width: 22%;
+  left: 0;
+  background-color: #a1abb5;
+  height: 100vh;
+  overflow-y: scroll;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sideBar.hidden {
+  transform: translateX(-100%);
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.medals{
+  height:100px;
+  width:100px;
+}
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  margin:auto;
+  margin-top:5vw;
+  width: 25vw;
+  background-color:rgb(160, 160, 214);
+}
+
+.navbar {
+  background-color: rgb(106, 90, 205);;
+  height: 8vh;
+  position: sticky;
+  top: 0;
+  align-self: stretch;
+  text-align: center;
+}
+.btnStyle {
+  padding: 10px 30px;
+  background-color: rgb(106, 90, 205);;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  max-width: 110px;
+}
+.linkStyle{
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .chat-container {
+    width: 90%;
+  }
+
+  .sideBar {
+    width: 70%;
+    transform: translateX(-100%);
+  }
+
+  .sideBar.visible {
+    transform: translateX(0);
+  }
 }

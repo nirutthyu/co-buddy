@@ -1,0 +1,20 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .medal-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .medals {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .navbar {
+    margin-bottom: 20px;
+  }
