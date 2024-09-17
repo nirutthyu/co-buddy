@@ -28,6 +28,7 @@
 
 .login input[type="email"],
 .login input[type="password"],
+.login input[type="text"],
 .login button {
     padding: 10px;
     margin-bottom: 10px;

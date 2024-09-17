@@ -28,6 +28,7 @@
 
 .signup input[type="email"],
 .signup input[type="password"],
+.signup input[type="text"],
 .signup button {
     padding: 10px;
     margin-bottom: 10px;

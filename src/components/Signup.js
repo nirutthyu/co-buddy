@@ -6,6 +6,7 @@ function Signup() {
     const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const[name,setName]=useState('');
 
     async function submit(e) {
         e.preventDefault();
@@ -16,7 +17,7 @@ function Signup() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ name,email, password }),
             });
 
             const data = await res.json();
@@ -25,6 +26,7 @@ function Signup() {
                 alert("User already exists");
             } else if (data === "notexist") {
                 localStorage.setItem("useremail", email);
+                localStorage.setItem("name", name);
                 history("/home", { state: { id: email } });
             }
         } catch (error) {
@@ -38,6 +40,12 @@ function Signup() {
             <div className="signup">
                 <h1>Signup</h1>
                 <form onSubmit={submit}>
+                <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Name"
+                    />
                     <input
                         type="email"
                         value={email}

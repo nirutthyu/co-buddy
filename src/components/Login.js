@@ -6,6 +6,7 @@ function Login() {
     const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name,setName]=useState('');
 
     async function submit(e) {
         e.preventDefault();
@@ -16,13 +17,14 @@ function Login() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ name,email, password }),
             });
 
             const data = await response.json();
 
             if (data === "exist") {
                 localStorage.setItem("useremail", email);
+                localStorage.setItem("name",name);
                 history("/home", { state: { id: email } });
             } else if (data === "notexist") {
                 alert("User has not signed up");
@@ -40,6 +42,12 @@ function Login() {
             <div className="login">
                 <h1>Login</h1>
                 <form onSubmit={submit}>
+                <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Name"
+                    />
                     <input
                         type="email"
                         value={email}

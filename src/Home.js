@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 
 
 export default function Home(){
+    
     return(
         <div style={{backgroundColor:"#e6e6fa",minHeight:"100vh",padding:"20px", display: "flex",flexDirection: "column",alignItems: "center"}}>
             <h1><center>Welcome to Co-Buddy!</center></h1>

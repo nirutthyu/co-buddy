@@ -72,7 +72,7 @@ app.post('/gemini/quiz', async (req, res) => {
 });
 
 app.post("/",async(req,res)=>{
-    const{email,password}=req.body
+    const{email}=req.body
 
     try{
         const check=await collection.findOne({email:email})
@@ -95,11 +95,12 @@ app.post("/",async(req,res)=>{
 
 
 app.post("/signup",async(req,res)=>{
-    const{email,password}=req.body
+    const{name,email,password}=req.body
 
     const data={
         email:email,
-        password:password
+        password:password,
+        name:name
     }
 
     try{
