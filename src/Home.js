@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom" 
-
+import Review from "./Review.js"
 
 export default function Home(){
     
@@ -16,8 +16,7 @@ export default function Home(){
             <section style={sectionStyle}>
                 <center>
                 <h2>What Our Users Say</h2>
-                <blockquote>"This app is fantastic for learning!"</blockquote>
-                <blockquote>"I love the quizzes and chat feature!"</blockquote>
+                <Review/>
                 </center>
             </section>
         </div>
