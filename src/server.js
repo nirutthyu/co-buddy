@@ -41,7 +41,7 @@ app.post('/gemini/quiz', async (req, res) => {
     try {
         const model = genAi.getGenerativeModel({ model: 'gemini-pro' });
         const content = await model.generateContent(
-            `Generate a quiz with 5 questions on the topic ${topic}. Format each question followed by its answer, using "::" to separate the question and answer. Example: "Question  :: Answer ". No additional formatting.`
+            `Generate a quiz with 10 questions on the topic ${topic}. Format each question followed by its answer, using "::" to separate the question and answer. Example: "Question  :: Answer ". No additional formatting.`
         );
         const response = content.response;
         const text = await response.text();
@@ -131,11 +131,11 @@ app.post("/save-score", async (req, res) => {
 
             let updateFields = { $set: { score: score } }; 
 
-            if (score === 5) {
+            if (score === 10) {
                 updateFields.$inc = { gold: 1 }; 
-            } else if (score >= 3 && score <= 4) {
+            } else if (score == 8 && score == 9) {
                 updateFields.$inc = { silver: 1 }; 
-            } else if (score === 2) {
+            } else if (score ==6 && score==7) {
                 updateFields.$inc = { bronze: 1 };
             }
 
