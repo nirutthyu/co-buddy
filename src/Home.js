@@ -7,18 +7,18 @@ export default function Home(){
     return(
         <div style={{backgroundColor:"#e6e6fa",minHeight:"100vh",padding:"20px", display: "flex",flexDirection: "column",alignItems: "center"}}>
             <h1><center>Welcome to Co-Buddy!</center></h1>
-            <p><center>Start your learning journey with quizzes and chat support.</center></p>
+            <p><center>Start your learning journey with AI generated quizzes</center></p>
         <div className="button-container" style={buttonContainerStyle}>
         <Link style={linkStyle} to="/quiz"><button style={btnStyle}>Quiz</button></Link>
         {/* <Link style={linkStyle} to="/chat"><button style={btnStyle}>Chat</button></Link> */}
         <Link style={linkStyle} to="/Dashboard"><button style={btnStyle}>My progress</button></Link>
         </div>
-            <section style={sectionStyle}>
+            {/* <section style={sectionStyle}>
                 <center>
                 <h2>Rate Your Experience!!</h2>
                 <Review/>
                 </center>
-            </section>
+            </section> */}
         </div>
     );
 }
