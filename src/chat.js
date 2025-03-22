@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {Link} from "react-router-dom"
 import Footer from "./Footer"
+const API_URL = process.env.REACT_APP_API_URL;
 export default function Chat() {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
@@ -17,7 +18,7 @@ export default function Chat() {
         body: JSON.stringify({ message: value, history: chatHistory }),
         headers: { "Content-Type": "application/json" },
       };
-      const response = await fetch("http://localhost:3001/gemini", options);
+      const response = await fetch(`${API_URL}/gemini`, options);
       if (!response.ok) {
         throw new Error("Failed to get response from server");
       }

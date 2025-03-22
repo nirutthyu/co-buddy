@@ -10,12 +10,12 @@ export default function Home(){
             <p><center>Start your learning journey with quizzes and chat support.</center></p>
         <div className="button-container" style={buttonContainerStyle}>
         <Link style={linkStyle} to="/quiz"><button style={btnStyle}>Quiz</button></Link>
-        <Link style={linkStyle} to="/chat"><button style={btnStyle}>Chat</button></Link>
+        {/* <Link style={linkStyle} to="/chat"><button style={btnStyle}>Chat</button></Link> */}
         <Link style={linkStyle} to="/Dashboard"><button style={btnStyle}>My progress</button></Link>
         </div>
             <section style={sectionStyle}>
                 <center>
-                <h2>What Our Users Say</h2>
+                <h2>Rate Your Experience!!</h2>
                 <Review/>
                 </center>
             </section>

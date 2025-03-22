@@ -1,35 +1,48 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Quiz.css"; 
+import "./Quiz.css";
 import Footer from "./Footer";
-
-export default function Quiz({score,setScore}) {
+const API_URL = process.env.REACT_APP_API_URL;
+export default function Quiz({ score, setScore }) {
   const [topic, setTopic] = useState("");
+  const [difficulty, setDifficulty] = useState(null);
   const [quizData, setQuizData] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [userAnswers, setUserAnswers] = useState({});
   const [results, setResults] = useState(null);
+
+  const selectDifficulty = (level) => {
+    setDifficulty(level);
+    setQuizData([]);
+    setAnswers([]);
+    setResults(null);
+    setScore(0);
+  };
+
   const generateQuiz = async () => {
     if (!topic) {
       console.log("Topic is not entered");
       return;
     }
+    if (!difficulty) {
+      console.log("Difficulty level is not selected");
+      return;
+    }
     try {
       const options = {
         method: "POST",
-        body: JSON.stringify({ topic }),
+        body: JSON.stringify({ topic, difficulty }),
         headers: { "Content-Type": "application/json" },
       };
-      const response = await fetch("http://localhost:3001/gemini/quiz", options);
+      const response = await fetch(`${API_URL}/gemini/quiz`, options);
       if (!response.ok) {
         throw new Error("Failed to get response from server");
       }
       const data = await response.json();
       setQuizData(data.questions);
       setAnswers(data.answers);
-      setResults(null); 
-      setScore(0); 
-      setUserAnswers({}); 
+      setResults(null);
+      setUserAnswers({});
     } catch (error) {
       console.error(error);
     }
@@ -44,7 +57,7 @@ export default function Quiz({score,setScore}) {
   };
 
   const handleSubmit = async () => {
-    console.log("submitting the answers");
+    console.log("Submitting the answers");
     let newScore = 0;
     const results = quizData.map((question, index) => {
       const userAnswer = userAnswers[index] || "";
@@ -67,7 +80,7 @@ export default function Quiz({score,setScore}) {
     const email = localStorage.getItem("useremail");
     if (email) {
       try {
-        const response = await fetch("http://localhost:3001/save-score", {
+        const response = await fetch(`${API_URL}/save-score`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, score: newScore }),
@@ -84,7 +97,7 @@ export default function Quiz({score,setScore}) {
     } else {
       console.error("No email found in localStorage");
     }
-};
+  };
 
   const questions = quizData.map((question, index) => (
     <div key={index} className="question-container">
@@ -100,22 +113,34 @@ export default function Quiz({score,setScore}) {
 
   return (
     <>
-       <div style={{backgroundColor:"#e6e6fa",height:"8vh",position:"sticky",top:"0",alignContent:"center"}}>
-      <Link class="linkStyle" to="/home"><button class="btnStyle">Back</button></Link>
-    </div>
+      <div style={{ backgroundColor: "#e6e6fa", height: "8vh", position: "sticky", top: "0", alignContent: "center" }}>
+        <Link className="linkStyle" to="/home">
+          <button className="btnStyle">Back</button>
+        </Link>
+      </div>
       <div className="quiz-wrapper">
         <div className="quiz-container">
           <h1 className="title">Quiz Generator</h1>
-          <div className="input-container">
-            <p className="input-label">Enter a topic:</p>
-            <input
-              type="text"
-              onChange={(e) => setTopic(e.target.value)}
-              value={topic}
-              className="topic-input"
-            />
-            <button onClick={generateQuiz} className="generate-button">Generate</button>
-          </div>
+          {!difficulty && (
+            <div className="difficulty-selection">
+              <p>Select Difficulty Level:</p>
+              <button className="difficulty-button" onClick={() => selectDifficulty("easy")}>Easy</button>
+              <button className="difficulty-button" onClick={() => selectDifficulty("medium")}>Medium</button>
+              <button className="difficulty-button" onClick={() => selectDifficulty("hard")}>Hard</button>
+            </div>
+          )}
+          {difficulty && (
+            <div className="input-container">
+              <p className="input-label">Enter a topic:</p>
+              <input
+                type="text"
+                onChange={(e) => setTopic(e.target.value)}
+                value={topic}
+                className="topic-input"
+              />
+              <button onClick={generateQuiz} className="generate-button">Generate</button>
+            </div>
+          )}
           <div className="questions-container">
             {questions}
             {quizData.length > 0 && (

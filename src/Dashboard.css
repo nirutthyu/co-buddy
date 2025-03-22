@@ -1,7 +1,9 @@
 .dashboard-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
   }
   
   .medal-row {
@@ -10,11 +12,24 @@
     gap: 10px;
   }
   
-  .medals {
-    width: 50px;
-    height: 50px;
-  }
   
   .navbar {
     margin-bottom: 20px;
   }
+  
+  .medals {
+    width: 80px;  
+    height: 80px; 
+    margin-right: 30px; 
+  }
+  
+  .score {
+    font-size: 1.5rem; 
+    font-weight: bold;
+    color: #363538;
+    padding: 10px 15px; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 5px;
+    text-align: center;
+  }
+  

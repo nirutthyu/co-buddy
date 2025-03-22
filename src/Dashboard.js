@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
+const API_URL = process.env.REACT_APP_API_URL;
 export default function Dashboard() {
   const [gold, setGold] = useState(0);
   const [silver, setSilver] = useState(0);
   const [bronze, setBronze] = useState(0);
+
   const fetchMedalCounts = async () => {
     const email = localStorage.getItem("useremail");
     try {
-      const response = await fetch("http://localhost:3001/get-medal-counts", {
+      const response = await fetch(`${API_URL}/get-medal-counts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -36,7 +38,6 @@ export default function Dashboard() {
 
   return (
     <>
-      {" "}
       <div
         style={{
           backgroundColor: "#e6e6fa",
@@ -46,8 +47,8 @@ export default function Dashboard() {
           alignContent: "center",
         }}
       >
-        <Link class="linkStyle" to="/home">
-          <button class="btnStyle">Back</button>
+        <Link className="linkStyle" to="/home">
+          <button className="btnStyle">Back</button>
         </Link>
       </div>
       <div className="dashboard-container">
@@ -57,7 +58,7 @@ export default function Dashboard() {
             className="medals"
             alt="Gold Medal"
           />
-          <div>{gold}</div>
+          <div className="score">{gold}</div> {/* Added class for styling */}
         </div>
         <div className="d-flex flex-row align-items-center">
           <img
@@ -65,7 +66,7 @@ export default function Dashboard() {
             className="medals"
             alt="Silver Medal"
           />
-          <div>{silver}</div>
+          <div className="score">{silver}</div> {/* Added class for styling */}
         </div>
         <div className="d-flex flex-row align-items-center">
           <img
@@ -73,7 +74,7 @@ export default function Dashboard() {
             className="medals"
             alt="Bronze Medal"
           />
-          <div>{bronze}</div>
+          <div className="score">{bronze}</div> {/* Added class for styling */}
         </div>
       </div>
     </>

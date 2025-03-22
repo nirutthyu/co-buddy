@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Signup.css"; 
-
+const API_URL = process.env.REACT_APP_API_URL;
 function Signup() {
     const history = useNavigate();
     const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ function Signup() {
         e.preventDefault();
 
         try {
-            const res = await fetch("http://localhost:3001/signup", {
+            const res = await fetch(`${API_URL}/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

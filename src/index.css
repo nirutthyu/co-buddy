@@ -37,6 +37,7 @@
 }
 
 .chat-container {
+  margin-bottom: 100px;
   width: 400px;
   max-width: 90%;
   height: 500px;
@@ -46,7 +47,7 @@
   display: flex;
   flex-direction: column;
   z-index: 1000;
-  margin: auto; /* Center horizontally */
+   /* Center horizontally */
 }
 
 .chat-history {

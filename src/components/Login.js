@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css"; 
+const API_URL = process.env.REACT_APP_API_URL;
+console.log("API_URL:", API_URL);
 
 function Login() {
     const history = useNavigate();
@@ -12,7 +14,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:3001/", {
+            const response = await fetch(`${API_URL}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

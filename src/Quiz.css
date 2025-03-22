@@ -5,6 +5,7 @@ quiz-wrapper {
   height: calc(100vh - 8vh); 
   background-color:#e6e6fa;
   padding-top: 20px;
+  margin-top: 20px;
 }
 
 .quiz-container {
@@ -71,6 +72,7 @@ quiz-wrapper {
 }
 
 .question-container {
+ 
   margin-bottom: 20px;
 }
 
@@ -103,4 +105,24 @@ quiz-wrapper {
 
 .incorrect {
   color: red;
+}
+.difficulty-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.difficulty-button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.difficulty-button:hover {
+  background-color: #483d8b;
 }
