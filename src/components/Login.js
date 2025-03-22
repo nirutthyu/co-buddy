@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css"; 
 const API_URL = process.env.REACT_APP_API_URL;
-console.log("API_URL:", API_URL);
 
 function Login() {
     const history = useNavigate();
