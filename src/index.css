@@ -189,3 +189,258 @@
     transform: translateX(0);
   }
 }
+.home-container {
+  background-color: #e6e6fa;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.btn {
+  padding: 15px 30px;
+  background-color: #6a5acd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 250px;
+}
+
+.btn:hover {
+  background-color: #634eeb;
+  color:white;
+  box-shadow:2px 2px 2px;
+}
+/* Header Styles */
+.header-container {
+  background-color: #6a5acd;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header-text h4 {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.menu-container {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.menu-item {
+  display: block;
+  background: none;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Quiz container */
+quiz-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(100vh - 8vh); 
+  background-color:#e6e6fa;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.quiz-container {
+  width: 50%;
+  height: 70vh; 
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #4b0082; 
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.topic-input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.generate-button,
+.submit-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #6a5acd;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.generate-button:hover,
+.submit-button:hover {
+  background-color: #483d8b;
+}
+
+.questions-container {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.question-container {
+ 
+  margin-bottom: 20px;
+}
+
+.question {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.answer-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.results-container {
+  margin-top: 20px;
+  padding-top: 20px; 
+  border-top: 1px solid #ddd; 
+  overflow: scroll;
+}
+
+.result-item {
+  margin-bottom: 20px;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+.difficulty-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.difficulty-button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.difficulty-button:hover {
+  background-color: #483d8b;
+}
+/*Dashboard*/
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  }
+  
+  .medal-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  
+  .navbar {
+    margin-bottom: 20px;
+  }
+  
+  .medals {
+    width: 80px;  
+    height: 80px; 
+    margin-right: 30px; 
+  }
+  
+  .score {
+    font-size: 1.5rem; 
+    font-weight: bold;
+    color: #363538;
+    padding: 10px 15px; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 5px;
+    text-align: center;
+  }
+  
