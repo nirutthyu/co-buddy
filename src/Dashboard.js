@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
+import { FaArrowLeft } from "react-icons/fa";
+
 const API_URL = process.env.REACT_APP_API_URL;
 export default function Dashboard() {
   const [gold, setGold] = useState(0);
@@ -48,7 +50,9 @@ export default function Dashboard() {
         }}
       >
         <Link className="linkStyle" to="/home">
-          <button className="btnStyle">Back</button>
+        <button className="btnStyle">
+            <FaArrowLeft /> 
+          </button>
         </Link>
       </div>
       <div className="dashboard-container">
@@ -58,7 +62,7 @@ export default function Dashboard() {
             className="medals"
             alt="Gold Medal"
           />
-          <div className="score">{gold}</div> {/* Added class for styling */}
+          <div className="score">{gold}</div> 
         </div>
         <div className="d-flex flex-row align-items-center">
           <img
@@ -66,7 +70,7 @@ export default function Dashboard() {
             className="medals"
             alt="Silver Medal"
           />
-          <div className="score">{silver}</div> {/* Added class for styling */}
+          <div className="score">{silver}</div>
         </div>
         <div className="d-flex flex-row align-items-center">
           <img
@@ -74,7 +78,7 @@ export default function Dashboard() {
             className="medals"
             alt="Bronze Medal"
           />
-          <div className="score">{bronze}</div> {/* Added class for styling */}
+          <div className="score">{bronze}</div>
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {Link} from "react-router-dom"
 import Footer from "./Footer"
+
 const API_URL = process.env.REACT_APP_API_URL;
 export default function Chat() {
   const [value, setValue] = useState("");

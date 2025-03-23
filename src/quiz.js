@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 import Footer from "./Footer";
+import { FaArrowLeft } from "react-icons/fa";
+
 const API_URL = process.env.REACT_APP_API_URL;
 export default function Quiz({ score, setScore }) {
   const [topic, setTopic] = useState("");
@@ -115,7 +117,7 @@ export default function Quiz({ score, setScore }) {
     <>
       <div style={{ backgroundColor: "#e6e6fa", height: "8vh", position: "sticky", top: "0", alignContent: "center" }}>
         <Link className="linkStyle" to="/home">
-          <button className="btnStyle">Back</button>
+          <button className="btnStyle"><FaArrowLeft/></button>
         </Link>
       </div>
       <div className="quiz-wrapper">
