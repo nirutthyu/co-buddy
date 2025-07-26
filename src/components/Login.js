@@ -1,72 +1,50 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import "./Login.css"; 
+import React from "react";
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode"; 
+
+
 const API_URL = process.env.REACT_APP_API_URL;
-
 function Login() {
-    const history = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [name,setName]=useState('');
+    const navigate = useNavigate();
 
-    async function submit(e) {
-        e.preventDefault();
-
+    const handleSuccess = async (credentialResponse) => {
         try {
-            const response = await fetch(`${API_URL}/`, {
+            const decoded = jwtDecode(credentialResponse.credential);
+            const { email, name } = decoded;
+            const res = await fetch(`${API_URL}/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name,email, password }),
+                body: JSON.stringify({ name, email, password: "google-oauth" }) // dummy password if needed
             });
-
-            const data = await response.json();
-
-            if (data === "exist") {
-                localStorage.setItem("useremail", email);
-                localStorage.setItem("name",name);
-                history("/home", { state: { id: email } });
-            } else if (data === "notexist") {
-                alert("User has not signed up");
-            } else {
-                alert("Wrong details or server error");
-            }
+            const response=await res.json()
+            console.log(response)
+            // Save to localStorage or send to backend for verification
+            localStorage.setItem("useremail", email);
+            localStorage.setItem("name", name);
+            
+            // Redirect to home
+            navigate("/home", { state: { id: email } });
         } catch (error) {
-            console.error("Error:", error);
-            alert("Failed to login. Please try again.");
+            console.error("Login failed:", error);
+            alert("Login failed");
         }
-    }
+    };
+
+    const handleError = () => {
+        alert("Google Sign-In was unsuccessful. Please try again.");
+    };
 
     return (
         <div className="login-container">
             <div className="login">
-                <h1>Login</h1>
-                <form onSubmit={submit}>
-                <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Name"
-                    />
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email"
-                    />
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
-                    />
-                    <button type="submit">Login</button>
-                </form>
-                <br />
-                <p>OR</p>
-                <br />
-                <Link to="/signup">Signup Page</Link>
+                <h1>Sign in with Google</h1>
+                <GoogleLogin
+                    onSuccess={handleSuccess}
+                    onError={handleError}
+                />
             </div>
         </div>
     );
