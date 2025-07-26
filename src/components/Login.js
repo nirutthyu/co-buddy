@@ -1,10 +1,11 @@
 import React from "react";
-import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; 
-
+import { jwtDecode } from "jwt-decode";
+import "./Login.css"; 
 
 const API_URL = process.env.REACT_APP_API_URL;
+
 function Login() {
     const navigate = useNavigate();
 
@@ -12,20 +13,21 @@ function Login() {
         try {
             const decoded = jwtDecode(credentialResponse.credential);
             const { email, name } = decoded;
+
             const res = await fetch(`${API_URL}/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, email, password: "google-oauth" }) // dummy password if needed
+                body: JSON.stringify({ name, email, password: "google-oauth" })
             });
-            const response=await res.json()
-            console.log(response)
-            // Save to localStorage or send to backend for verification
+
+            const response = await res.json();
+            console.log(response);
+
             localStorage.setItem("useremail", email);
             localStorage.setItem("name", name);
-            
-            // Redirect to home
+
             navigate("/home", { state: { id: email } });
         } catch (error) {
             console.error("Login failed:", error);
@@ -39,8 +41,8 @@ function Login() {
 
     return (
         <div className="login-container">
-            <div className="login">
-                <h1>Sign in with Google</h1>
+            <div className="login-box">
+                <h1 className="login-title">Sign in with Google</h1>
                 <GoogleLogin
                     onSuccess={handleSuccess}
                     onError={handleError}
